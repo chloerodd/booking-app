@@ -1,17 +1,21 @@
 body {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #f4f4f4;
+    color: #967f71;
     min-height: 100vh;
+    margin: 20px;
 }
 
 h1,
 h2,
 h3 {
-    color: #ffffff;
+    color: #967f71;
+    text-align: center;
 }
 
 .title {
-    color: #ffffff;
+    color: #7a665a;
+    text-align: center;
+    text-shadow: 4px 4px 6px #ccc;
 }
 
 .gallery {
@@ -34,15 +38,20 @@ p {
     font-size: 12px;
 }
 body {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #f4f4f4;
+    color: #967f71;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
   }
   
   h1,
   h2,
   h3 {
-    color: #ffffff;
+    color: #967f71;
   }
   
   .container {
@@ -50,9 +59,7 @@ body {
     padding-right: 0;
   }
   
-  .title {
-    color: #ffffff;
-  }
+
   
   .gallery {
     display: grid;
@@ -71,7 +78,8 @@ body {
   }
   
   p {
-    font-size: 12px;
+    font-size: 20px;
+    text-align: center;
   }
   
   .detail__img {
@@ -80,7 +88,7 @@ body {
     top: 0;
     width: 100%;
     height: 500px;
-    background-color: #ffffff;
+    background-color: #f4f4f4;
     overflow: hidden;
   }
   
@@ -98,8 +106,8 @@ body {
   img {
     width: 100%;
     height: 500px;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain;
+    object-position: center;
   }
   
   .detail__name {
@@ -111,3 +119,85 @@ body {
   .detail__container {
     margin-top: 500px;
   }
+  .page-footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; 
+    color: #967f71;
+}
+.nav-extended {
+    background-color: #f4f4f4;
+}
+.active {
+    color: #967f71;
+}
+.logo {
+    max-width: 200px;
+    max-height: 90px;
+    align-content: center;
+    margin: 0 auto
+}
+.rating {
+    display: inline-block;
+    position: relative;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label:before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding: 2px;
+    font-size: 24px;
+    display: inline-block;
+    margin: 0;
+}
+
+.rating input:checked ~ label:before {
+    content: "\f005";
+    color: #ffab00; /* Change the color to represent a selected star */
+}
+
+.rating label {
+    cursor: pointer;
+}
+
+.rating label:hover:before {
+    content: "\f005";
+    color: #ffab00; /* Change the color on hover to indicate the potential selected star */
+}
+.review-form {
+    padding: 10px;
+    margin: 20px;
+}
+.card-header {
+    color: #ac998e;
+}
+.card-header-title {
+    font-size: 20px;
+    text-align: center;
+}
+.title-img {
+    color: #ac998e;
+    text-shadow: 2px 2px 2px #ccc;
+    text-align: center;
+}
+.buttons {
+    text-align: center;
+    padding: 4px;
+}
+h4 {
+    font-size: 60px;
+}
+h5 {
+    text-align: center;
+    color: #7a665a;
+    font-size: 60px;
+}
+.table {
+    text-align: center;
+}

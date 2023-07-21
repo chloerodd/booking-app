@@ -4,27 +4,22 @@
     <img src="{{service.img}}" alt="{{service.name}}" />
 </div>
 <div class="detail__name">
-    <h1 class="title">{{service.name}}</h1>
+    <h1 class="title-img">{{service.name}}</h1>
 </div>
 <div class="detail__container">
-    <div class="buttons">
-        <a href="{% url 'service_update' service.pk %}" class="button is-info"> Updates
-            <span class="icon">
-                <i class="fas fa-edit"></i>
-            </span>
-        </a>
-        <a href="{% url 'service_delete' service.pk %}" class="button is-danger">Delete
-            <span class="icon">
-                <i class="fas fa-trash-alt"></i>
-            </span>
-        </a>
-    </div>
-    <div>
-        <a href="https://calendly.com/chloe-rrodd" target="_blank" class="btn btn-primary">Schedule an appointment</a>
-    </div>
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
         <p>{{service.details}}</p>
+    </div>
+    <div class="buttons">
+        <a href="https://calendly.com/chloe-rrodd" target="_blank" class="btn btn-primary">Schedule an appointment</a>
+    </div>
+    <div class="buttons">
+        <a href = "{% url 'service_list' %}" class="waves-effect waves-light btn">Back</a>
+    </div>
+    <div class="buttons">
+        <a href="{% url 'service_update' service.pk %}" class="waves-effect waves-light btn"> Updates</a>
+        <a href="{% url 'service_delete' service.pk %}" class="waves-effect waves-light btn">Delete</a>
     </div>
 </div>
 

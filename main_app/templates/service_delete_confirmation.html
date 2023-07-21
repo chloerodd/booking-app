@@ -4,9 +4,9 @@
     {% csrf_token %}
     <div class="buttons">
     <!-- confirm artist delete -->
-        <input class="button is-danger" type="submit" value="Confirm" />
+        <input class="waves-effect green lighten-1 btn" type="submit" value="Confirm" />
         <!-- Redirect back to detail on cancel -->
-        <a class="button is-primary" href="{% url 'service_detail' service.pk %}">Cancel</a>
+        <a class="waves-effect red darken-3 btn" href="{% url 'service_detail' service.pk %}">Cancel</a>
     </div>
 </form>
 {% endblock %}

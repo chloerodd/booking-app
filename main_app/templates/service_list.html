@@ -7,19 +7,19 @@
 
 <h1 class="title pt-5">Available Services</h1>
 <div>
-  <a class="button is-dark" href="{% url 'service_create' %}">Add Service</a>
+  <a class="waves-effect waves-light btn" href="{% url 'service_create' %}">Add Service</a>
 </div>
 <div class="gallery">
   {% for service in services %}
   <a href="{% url 'service_detail' service.pk %}">
     <div class="card">
       <div class="card-img">
+        <div class="card-header">
+          <p class="card-header-title">{{service.name}}</p>
+        </div>
         <figure class="image is-square">
           <img src="{{service.img}}" alt="{{service.name}}" />
         </figure>
-      </div>
-      <div class="card-header">
-        <p class="card-header-title">{{service.name}}</p>
       </div>
     </div>
   </a>

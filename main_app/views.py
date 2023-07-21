@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -6,6 +6,7 @@ from django.views.generic import DetailView
 from .models import Service as DBService
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
+from .models import Review
 
 # Create your views here.
 
@@ -65,3 +66,14 @@ class ServiceDelete(DeleteView):
     template_name = "service_delete_confirmation.html"
     success_url = "/services/"
     
+    
+def reviews_page(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        rating = request.POST.get('rating')
+        text = request.POST.get('text')
+        review = Review.objects.create(name=name, rating=rating, text=text)
+        return redirect('reviews_page')  # Redirect back to the reviews page after submitting the review
+    else:
+        reviews = Review.objects.all()
+        return render(request, 'reviews_page.html', {'reviews': reviews})

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="review-form">
+<div>
+  <h2>Our Reviews!</h2>
+  {% if reviews %}
+    {% for review in reviews %}
+    <p>Name: {{ review.name }}</p>
+    <p>Rating: {{ review.rating }}</p>
+    <p>{{ review.text }}</p>
+    <hr>
+    {% endfor %}
+  {% else %}
+    <p>No reviews yet.</p>
+  {% endif %}
+</div>
+<div>
+  <style>
+    .star-rating {
+        display: inline-block;
+    }
+
+    .star-rating input[type="radio"] {
+        display: none;
+    }
+
+    .star-rating label i.material-icons {
+        font-size: 24px;
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    .star-rating input[type="radio"]:checked ~ label i.material-icons {
+        color: #f9a825;
+    }
+    .input-field input[type="text"]:focus + label,
+    .input-field textarea.materialize-textarea:focus + label {
+        opacity: 0;
+    }
+</style>
+
+<h2>Add a Review!</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="input-field">
+        <input type="text" id="name" name="name" required>
+        <label for="name">Your Name</label>
+    </div>
+    <div class="input-field">
+        <p>Rating:</p>
+        <div class="star-rating">
+          <input type="radio" id="star1" name="rating" value="1" />
+            <label for="star1" title="1 star">
+                <i class="material-icons">star</i>
+            </label>
+            <input type="radio" id="star2" name="rating" value="2" />
+            <label for="star2" title="2 stars">
+                <i class="material-icons">star</i>
+            </label>
+            <input type="radio" id="star3" name="rating" value="3" />
+            <label for="star3" title="3 stars">
+                <i class="material-icons">star</i>
+            </label>
+            <input type="radio" id="star4" name="rating" value="4" />
+            <label for="star4" title="4 stars">
+                <i class="material-icons">star</i>
+            </label>
+            <input type="radio" id="star5" name="rating" value="5" required />
+            <label for="star5" title="5 stars">
+                <i class="material-icons">star</i>
+            </label>
+        </div>
+    </div>
+    <div class="input-field">
+        <textarea id="text" class="materialize-textarea" name="text" required></textarea>
+        <label for="text">Review</label>
+    </div>
+    <button type="submit" class="btn waves-effect waves-light">Submit Review</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('input[type="radio"]').click(function () {
+            $(this).parent().prevAll().children('i').addClass('active');
+            $(this).parent().nextAll().children('i').removeClass('active');
+            $(this).parent().children('i').addClass('active');
+        });
+    });
+</script>
+</div>
+</div>
+{% endblock %}
