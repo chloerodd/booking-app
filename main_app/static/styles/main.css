@@ -201,3 +201,23 @@ h5 {
 .table {
     text-align: center;
 }
+.navbar-item {
+    color: #4db6ac;
+    padding: 20px;
+}
+.navbar-end {
+    text-align: center;
+}
+.welcome {
+    font-family: 'Amatic SC', cursive;
+    font-size: 70px;
+    color: #7a665a;
+}
+.home {
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+}
+.rates {
+    text-align: left;
+    font-size: 15px;
+}

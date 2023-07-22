@@ -7,6 +7,12 @@ from .models import Service as DBService
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from .models import Review
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+# Auth
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 
@@ -46,14 +52,15 @@ class ServiceDetail(DetailView):
     model = DBService
     template_name = "service_detail.html"
     
-    
+@method_decorator(login_required, name='dispatch')    
 class ServiceCreate(CreateView):
     model = DBService
     fields = ['name', 'img', 'details']
     template_name = "service_create.html"
     def get_success_url(self):
         return reverse('service_detail', kwargs={'pk': self.object.pk})
-    
+ 
+@method_decorator(login_required, name='dispatch')    
 class ServiceUpdate(UpdateView):
     model = DBService
     fields = ['name', 'img', 'details']
@@ -61,6 +68,7 @@ class ServiceUpdate(UpdateView):
     def get_success_url(self):
         return reverse('service_detail', kwargs={'pk': self.object.pk})
     
+@method_decorator(login_required, name='dispatch')
 class ServiceDelete(DeleteView):
     model = DBService
     template_name = "service_delete_confirmation.html"
@@ -77,3 +85,21 @@ def reviews_page(request):
     else:
         reviews = Review.objects.all()
         return render(request, 'reviews_page.html', {'reviews': reviews})
+    
+    
+class Signup(View):
+    # show a form to fill out
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    # on form submit, validate the form and login the user.
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("service_list")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)

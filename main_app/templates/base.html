@@ -7,6 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
         <script src="{% static 'scripts/main.js' %}" defer></script>
@@ -26,6 +29,18 @@
                 <li class="tab"><a class="active" href="/reviews" style="color: #976f71;">Reviews</a></li>
               </ul>
             </div>
+            {% if user.is_authenticated %}
+                    <div class="navbar-menu navbar-end">
+                        <span class="navbar-item">Welcome: {{user.username}}</span>
+                        <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                <div class="navbar-menu navbar-end">
+                   <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+                    <!--   here is our new link      -->
+                   <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            {% endif %}
           </nav>
           
               
