@@ -84,9 +84,9 @@ DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'capstone',
-    'USER': os.environ['DB_USER'],
-    'PASSWORD': os.environ['DB_PW'],
-    'HOST': os.environ['DB_HOST'],
+    'USER': os.environ.get('DB_USER'),
+    'PASSWORD': os.environ.get('DB_PW'),
+    'HOST': os.environ.get('DB_HOST'),
     'PORT': '5432',
   }
 }

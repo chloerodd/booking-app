@@ -57,6 +57,11 @@ class ServiceCreate(CreateView):
     model = DBService
     fields = ['name', 'img', 'details']
     template_name = "service_create.html"
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
     def get_success_url(self):
         return reverse('service_detail', kwargs={'pk': self.object.pk})
  
